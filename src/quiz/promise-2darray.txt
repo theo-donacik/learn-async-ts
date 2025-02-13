@@ -1,4 +1,12 @@
 - Extract the code in the setTimeout function and replace the setTimeout function  with the extracted code. Then run the main script. 
 - Is there a difference in the flow of execution from when the code was in the setTimeout function?
-- Is the flow of execution in both these examples different from the flow of execution with the examples using the fetch() API, which also returns a promise? 
+  Yes, when the logic is in the setTimeout function, it is not called until the next event 
+  loop cycle, after the second sum has already been rejected, meaning sumPromise2 logs before 1.
+  By extracting the code, the sum is calculated synchronously, so sumPromise1 is logged
+  before 2, in the order they are called. 
+
+- Is the flow of execution in both these examples different from the flow of execution with the examples using the fetch() API, which also returns a promise?
+  The flow of execution is different with fetch because the result from fetch is a 
+  promise of a promise, so the result of each promise must be chained or awaited. 
+
 - If yes, explain the code execution difference. Add your explanation to this file.
